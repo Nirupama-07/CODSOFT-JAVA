@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class grade {
+    public static void main(String[] args) {
+        // Create a Scanner object to take input from the user
+        Scanner scanner = new Scanner(System.in);
+
+        // Ask for the student's name
+        System.out.print("Enter student name: ");
+        String studentName = scanner.nextLine();
+
+        // Ask for marks in different subjects
+        System.out.print("Enter marks for subject 1: ");
+        double subject1 = scanner.nextDouble();
+        
+        System.out.print("Enter marks for subject 2: ");
+        double subject2 = scanner.nextDouble();
+        
+        System.out.print("Enter marks for subject 3: ");
+        double subject3 = scanner.nextDouble();
+        
+        System.out.print("Enter marks for subject 4: ");
+        double subject4 = scanner.nextDouble();
+        
+        System.out.print("Enter marks for subject 5: ");
+        double subject5 = scanner.nextDouble();
+        
+        // Calculate the total and average marks
+        double totalMarks = subject1 + subject2 + subject3 + subject4 + subject5;
+        double averageMarks = totalMarks / 5;
+
+        // Print the total and average marks
+        System.out.println("\nTotal Marks: " + totalMarks);
+        System.out.println("Average Marks: " + averageMarks);
+
+        // Determine the grade based on the average marks
+        String grade;
+        if (averageMarks >= 90) {
+            grade = "A+";
+        } else if (averageMarks >= 80) {
+            grade = "A";
+        } else if (averageMarks >= 70) {
+            grade = "B";
+        } else if (averageMarks >= 60) {
+            grade = "C";
+        } else if (averageMarks >= 50) {
+            grade = "D";
+        } else {
+            grade = "F";
+        }
+
+        // Print the grade
+        System.out.println("Grade: " + grade);
+
+        // Close the scanner
+        scanner.close();
+    }
+}
