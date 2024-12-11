@@ -1,0 +1,73 @@
+import java.util.Scanner;
+
+public class Atm {
+    private static double balance = 1000.0; // Initial balance for the user
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // ATM Interface Menu
+        while (true) {
+            System.out.println("ATM Interface");
+            System.out.println("--------------");
+            System.out.println("1. Check Balance");
+            System.out.println("2. Deposit Money");
+            System.out.println("3. Withdraw Money");
+            System.out.println("4. Exit");
+            System.out.print("Select an option (1-4): ");
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    checkBalance();
+                    break;
+                case 2:
+                    depositMoney(scanner);
+                    break;
+                case 3:
+                    withdrawMoney(scanner);
+                    break;
+                case 4:
+                    System.out.println("Exiting ATM... Thank you for using the service.");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please select a valid option (1-4).");
+                    break;
+            }
+        }
+    }
+
+    // Method to check balance
+    private static void checkBalance() {
+        System.out.println("Your current balance is: $" + balance);
+    }
+
+    // Method to deposit money
+    private static void depositMoney(Scanner scanner) {
+        System.out.print("Enter the amount to deposit: $");
+        double depositAmount = scanner.nextDouble();
+        if (depositAmount > 0) {
+            balance += depositAmount;
+            System.out.println("You have successfully deposited $" + depositAmount);
+        } else {
+            System.out.println("Invalid amount. Please enter a positive number.");
+        }
+    }
+
+    // Method to withdraw money
+    private static void withdrawMoney(Scanner scanner) {
+        System.out.print("Enter the amount to withdraw: $");
+        double withdrawAmount = scanner.nextDouble();
+        if (withdrawAmount > 0 && withdrawAmount <= balance) {
+            balance -= withdrawAmount;
+            System.out.println("You have successfully withdrawn $" + withdrawAmount);
+        } else if (withdrawAmount <= 0) {
+            System.out.println("Invalid amount. Please enter a positive number.");
+        } else {
+            System.out.println("Insufficient balance. Your current balance is $" + balance);
+        }
+    }
+}
+
